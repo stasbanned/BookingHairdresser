@@ -16,6 +16,9 @@ protocol AuthorizationProtocol {
 
 class Authorization {
     var delegate: AuthorizationProtocol?
+    init(delegate: AuthorizationProtocol) {
+        self.delegate = delegate
+    }
     func authNewUserOrMaster(performSegue: (String, Any?) -> (), withIdentifierforUser: String,
                              withIdentifierforMaster: String, sender: Any?) {
         var user: [User]? = nil

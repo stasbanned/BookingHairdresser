@@ -12,7 +12,7 @@ class AuthorizationVC: UIViewController, AuthorizationProtocol {
     var user: [User]? = nil
     var master: [Master]? = nil
     var event: [Event]? = nil
-    var authorization = Authorization()
+    lazy var authorization = Authorization(delegate: self)
     @IBOutlet weak var loginText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var userOrMasterControl: UISegmentedControl!
@@ -23,7 +23,6 @@ class AuthorizationVC: UIViewController, AuthorizationProtocol {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        authorization.delegate = self
         user = User.fetchObject()
         master = Master.fetchObject()
         event = Event.fetchObject()

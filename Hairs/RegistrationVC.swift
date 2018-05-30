@@ -11,7 +11,7 @@ import UIKit
 class RegistrationVC: UIViewController, RegistrationProtocol {
     var user: [User]? = nil
     var master: [Master]? = nil
-    var registration = Registration()
+    lazy var registration = Registration(delegate: self)
     @IBOutlet weak var loginText: UITextField!
     @IBOutlet weak var passwordText: UITextField!
     @IBOutlet weak var confirmText: UITextField!
@@ -24,7 +24,6 @@ class RegistrationVC: UIViewController, RegistrationProtocol {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        registration.delegate = self
         user = User.fetchObject()
         master = Master.fetchObject()
     }

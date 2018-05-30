@@ -18,6 +18,9 @@ protocol RegistrationProtocol {
 
 class Registration {
     var delegate: RegistrationProtocol?
+    init(delegate: RegistrationProtocol) {
+        self.delegate = delegate
+    }
     func regNewUserOrMaster(performSegue: (String, Any?) -> (), withIdentifier: String, sender: Any?) {
         var user: [User]? = nil
         var master: [Master]? = nil
