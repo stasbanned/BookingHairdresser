@@ -26,6 +26,8 @@ class RegistrationVC: UIViewController, RegistrationProtocol {
         super.viewDidLoad()
         user = User.fetchObject()
         master = Master.fetchObject()
+        passwordText.isSecureTextEntry = true
+        confirmText.isSecureTextEntry = true
     }
     func getSegmentControlValue() -> Int {
         if userOrMasterController.selectedSegmentIndex == 0 {
@@ -44,5 +46,9 @@ class RegistrationVC: UIViewController, RegistrationProtocol {
     }
     func getNameText() -> String {
         return nameText.text!
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destination = segue.destination as! AuthorizationVC
+        destination.isShowNavigationBar = false
     }
 }

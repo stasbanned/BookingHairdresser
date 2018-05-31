@@ -12,6 +12,7 @@ protocol AuthorizationProtocol {
     func getSegmentControlValue() -> Int
     func getLoginText() -> String
     func getPasswordText() -> String
+    func changeColorOfPasswodField()
 }
 
 class Authorization {
@@ -44,5 +45,6 @@ class Authorization {
                 }
             }
         }
+        delegate?.changeColorOfPasswodField()
     }
 }
